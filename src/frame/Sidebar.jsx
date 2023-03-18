@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Divider from "../components/Divider";
-import { Home } from "../components/Icons";
+import { Home, Person } from "../components/Icons";
 import SidebarTab from "./SidebarTab";
 import Legend from "./Legend";
 
@@ -10,6 +10,11 @@ const mainRoutes = [
         name: "Home",
         path: "/",
         icon: <Home height="20" className="mb-1" />,
+    },
+    {
+        name: "Personal Index",
+        path: "/",
+        icon: <Person height="20" className="mb-1" />,
     },
 ];
 
