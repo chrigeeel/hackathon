@@ -14,7 +14,11 @@ export const getSpecificGemeinde = (data, name) => {
 export const getEnergieverbrauch = async () => {
     let response = await axios.get(calculateUrl(ENERGIEVERBRAUCH_DATASET))
     
+
     response = sortResponse(response)
+
+    console.log(response.data, "response 2fdwnudfshui")
+
 
     return response.data
 }
@@ -44,12 +48,16 @@ export const getEnergiefoerderProgramm = async () => {
 }
 
 const sortResponse = (response) => {
+    response.data.records = response.data.records.map((record) => {
+        record.fields.totalPerKopf = record.fields["total"] / record.fields["einwohner"]
+        return record
+    })
     try {
         response.data.records = response.data.records.sort((a, b) => {
-            if (a.fields.total < b.fields.total) {
+            if (a.fields.totalPerKopf < b.fields.totalPerKopf) {
                 return 1
             }
-            if (a.fields.total > b.fields.total) {
+            if (a.fields.totalPerKopf > b.fields.totalPerKopf) {
                 return -1
             }
             return 0
@@ -57,7 +65,6 @@ const sortResponse = (response) => {
     } catch (err) {
         console.log(err)
     }
-
     return response
 }
 
