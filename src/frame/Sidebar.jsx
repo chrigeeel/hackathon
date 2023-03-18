@@ -28,7 +28,7 @@ const Sidebar = () => {
         <div className="scrollbar-hide hidden h-screen w-[260px] min-w-[260px] flex-col overflow-y-auto bg-[#25244E] shadow-xl md:flex">
             <Link to="/" className="flex min-h-[80px] w-full items-center">
                 <span className="ml-6 text-lg font-black uppercase">
-                    Team Name
+                    Pushing Data
                 </span>
             </Link>
             <div className="flex flex-grow flex-col px-6 py-3">
