@@ -1,5 +1,6 @@
 import React from "react";
 import Divider from "../../components/Divider";
+import Explanation from "./explanation";
 import Gemeinde from "./Gemeinde";
 import GemeindeInput from "./GemeindeInput";
 
@@ -11,16 +12,18 @@ const Comparison = () => {
             </h3>
             <Divider className="mt-4" />
             <div className="flex w-full flex-col gap-4 md:flex-row">
-                <div className="mt-4 w-full md:w-1/2">
+                <div className="mt-4 w-full pb-4 md:w-1/2">
                     <GemeindeInput />
                     <Gemeinde name="Romanshorn" />
                 </div>
                 <div className="h-full w-0.5 bg-[#393869]"></div>
-                <div className="mt-4 w-full md:w-1/2">
+                <div className="mt-4 w-full pb-4 md:w-1/2">
                     <GemeindeInput />
                     <Gemeinde name="Romanshorn" />
                 </div>
             </div>
+            <Divider className="mb-4" />
+            <Explanation />
         </div>
     );
 };

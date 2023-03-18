@@ -40,21 +40,63 @@ const Gemeinde = ({ name }) => {
     });
 
     const [energieVerbrauchData, setEnergieVerbrauchData] = useState({});
+    const [CO2Emissionen, setCO2Emissionen] = useState({});
+    const [ErneuerbareElektrizitaet, setErneuerbareElektrizitaet] = useState(
+        {}
+    );
+    const [EnergiefoerderProgramm, setEnergiefoerderProgramm] = useState({});
 
     useEffect(() => {
         if (!energieVerbrauchQuery.isSuccess) {
             return;
         }
 
-        console.log(energieVerbrauchQuery.data, "1");
+        const normalized = addInverseIndexToData(
+            energieVerbrauchQuery.data,
+            "energieVerbrauchIndex"
+        );
+
+        const data = getSpecificGemeinde(normalized, name);
+        setEnergieVerbrauchData(data);
+    }, [energieVerbrauchQuery.data]);
+
+    useEffect(() => {
+        if (!energieVerbrauchQuery.isSuccess) {
+            return;
+        }
 
         const normalized = addInverseIndexToData(
             energieVerbrauchQuery.data,
             "energieVerbrauchIndex"
         );
 
-        console.log(normalized, "normalized");
-        console.log("normalized");
+        const data = getSpecificGemeinde(normalized, name);
+        setEnergieVerbrauchData(data);
+    }, [energieVerbrauchQuery.data]);
+
+    useEffect(() => {
+        if (!energieVerbrauchQuery.isSuccess) {
+            return;
+        }
+
+        const normalized = addInverseIndexToData(
+            energieVerbrauchQuery.data,
+            "energieVerbrauchIndex"
+        );
+
+        const data = getSpecificGemeinde(normalized, name);
+        setEnergieVerbrauchData(data);
+    }, [energieVerbrauchQuery.data]);
+
+    useEffect(() => {
+        if (!energieVerbrauchQuery.isSuccess) {
+            return;
+        }
+
+        const normalized = addInverseIndexToData(
+            energieVerbrauchQuery.data,
+            "energieVerbrauchIndex"
+        );
 
         const data = getSpecificGemeinde(normalized, name);
         setEnergieVerbrauchData(data);
@@ -63,9 +105,6 @@ const Gemeinde = ({ name }) => {
     return (
         <div className="mt-4">
             <Pie value={90} />
-            <p className="break-words">
-                {JSON.stringify(energieVerbrauchData).toString()}
-            </p>
         </div>
     );
 };
