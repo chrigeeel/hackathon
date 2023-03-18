@@ -5,12 +5,23 @@ Recommend using yarn.
 
 ## Install
 ```
-npm install
 yarn install
 ```
 
 ## Run
 ```
-npm run dev
 yarn dev
 ```
+
+
+With npm:
+## Install
+```
+
+npm install
+```
+
+
+## Run
+```
+npm run dev
