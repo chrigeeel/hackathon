@@ -61,4 +61,4 @@ const sortResponse = (response) => {
     return response
 }
 
-const calculateUrl = (dataset) => (`https://data.tg.ch/api/records/1.0/search/?rows=80&sort=total&start=0&dataset=${dataset}&timezone=Europe%2FZurich&lang=en`)
+const calculateUrl = (dataset) => (`https://data.tg.ch/api/records/1.0/search/?rows=80&sort=jahr&start=0&dataset=${dataset}&timezone=Europe%2FZurich&lang=en`)

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Divider from "../components/Divider";
 import { Home } from "../components/Icons";
 import SidebarTab from "./SidebarTab";
+import Legend from "./Legend";
 
 const mainRoutes = [
     {
@@ -20,7 +21,7 @@ const Sidebar = () => {
                     Team Name
                 </span>
             </Link>
-            <div className="flex flex-col px-6 py-3">
+            <div className="flex flex-grow flex-col px-6 py-3">
                 <div className="flex flex-col">
                     <span className="font-bold text-mute">Main</span>
                     <div className="mt-5 flex flex-col gap-4">
@@ -38,6 +39,21 @@ const Sidebar = () => {
                 <Divider className="my-5" />
                 <div className="flex flex-col">
                     <span className="font-bold text-mute">Contact</span>
+                </div>
+                <div className="mt-auto flex flex-col">
+                    <div className="flex items-center">
+                        <span className="mb-1 text-base font-semibold text-mute">
+                            Legende
+                        </span>
+                        <Link
+                            to="legende"
+                            className="ml-auto text-base font-semibold text-mute underline"
+                        >
+                            More Info
+                        </Link>
+                    </div>
+
+                    <Legend />
                 </div>
             </div>
         </div>
