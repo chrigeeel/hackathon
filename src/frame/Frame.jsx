@@ -1,10 +1,16 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 const Frame = () => {
   return (
-    <div className="flex h-screen w-screen">
-      <div className="hidden w-64 bg-gray-700 md:block">Sidebar</div>
+    <div
+      style={{
+        fontFamily: "'Inter', sans-serif;",
+      }}
+      className="flex h-screen w-screen bg-[#171649] text-neutral-50"
+    >
+      <Sidebar />
       <div className="flex h-screen w-full flex-col overflow-hidden">
         <Outlet />
       </div>
