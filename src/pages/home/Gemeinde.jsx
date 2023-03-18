@@ -118,9 +118,9 @@ const Gemeinde = ({ name }) => {
         if (!erneuerbareElektrizitaetData) {
             return;
         }
-        if (!energiefoerderProgrammData) {
-            return;
-        }
+        //if (!energiefoerderProgrammData) {
+        //    return;
+        //}
 
         console.log(energieVerbrauchData.fields.energieVerbrauchIndex);
         let totalIndex = 0;
@@ -147,7 +147,7 @@ const Gemeinde = ({ name }) => {
         energieVerbrauchData,
         co2EmissionenData,
         erneuerbareElektrizitaetData,
-        energiefoerderProgrammData,
+        //energiefoerderProgrammData,
         name,
     ]);
 
