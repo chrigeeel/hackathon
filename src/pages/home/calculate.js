@@ -7,23 +7,25 @@ function normalize(value, min, max) {
 }
 
 export const addIndexToData = (data, indexName) => {
-    console.log(data)
+    const newData = {...data}
 
     const lowest_total =
-            data.records[79].fields["totalPerKopf"];
+    newData.records[79].fields["totalPerKopf"];
     const highest_total =
-            data.records[0].fields["totalPerKopf"];
+    newData.records[0].fields["totalPerKopf"];
        
-    data.records = data.records.map((record) => {
+    newData.records = newData.records.map((record) => {
         const index = normalize(
             record.fields["totalPerKopf"],
             lowest_total,
             highest_total
         )
-        record[indexName] = index
+        record.fields[indexName] = index
+
+        return record
     })
 
-    return data
+    return newData
 }
 
 export const addInverseIndexToData = (data, indexName) => {

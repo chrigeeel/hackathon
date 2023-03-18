@@ -7,7 +7,7 @@ import {
     getErneuerbareElektrizitaet,
     getSpecificGemeinde,
 } from "../../api/api";
-import { addInverseIndexToData } from "./calculate";
+import { addInverseIndexToData, addIndexToData } from "./calculate";
 import Pie from "./Pie";
 
 function normalize_and_inversion(value, min, max) {
@@ -65,7 +65,7 @@ const Gemeinde = ({ name }) => {
             return;
         }
 
-        const normalized = addInverseIndexToData(
+        const normalized = addIndexToData(
             erneuerbareElektrizitaetQuery.data,
             "erneuerbareElektrizitaetIndex"
         );
@@ -93,7 +93,7 @@ const Gemeinde = ({ name }) => {
             return;
         }
 
-        const normalized = addInverseIndexToData(
+        const normalized = addIndexToData(
             energiefoerderProgrammQuery.data,
             "EnergiefoerderProgrammIndex"
         );
