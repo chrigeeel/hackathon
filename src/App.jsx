@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Frame from "./frame/Frame";
 import Home from "./pages/home/Home";
 import Legende from "./pages/legende/Legende";
+import Ranking from "./pages/ranking/Ranking";
 
 const queryClient = new QueryClient();
 
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
+            },
+            {
+                path: "/ranking",
+                element: <Ranking />,
             },
         ],
     },

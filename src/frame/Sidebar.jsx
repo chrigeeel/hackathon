@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Divider from "../components/Divider";
-import { Home, Person } from "../components/Icons";
+import { Home, Person, Podium } from "../components/Icons";
 import SidebarTab from "./SidebarTab";
 import Legend from "./Legend";
 
@@ -14,7 +14,7 @@ const mainRoutes = [
     {
         name: "Ranking",
         path: "/ranking",
-        icon: <Person height="20" className="mb-1" />,
+        icon: <Podium height="20" className="mb-1" />,
     },
     {
         name: "Personal Index",
@@ -25,7 +25,7 @@ const mainRoutes = [
 
 const Sidebar = () => {
     return (
-        <div className="scrollbar-hide flex h-screen w-[260px] min-w-[260px] flex-col overflow-y-auto bg-[#25244E] shadow-xl">
+        <div className="scrollbar-hide hidden h-screen w-[260px] min-w-[260px] flex-col overflow-y-auto bg-[#25244E] shadow-xl md:flex">
             <Link to="/" className="flex min-h-[80px] w-full items-center">
                 <span className="ml-6 text-lg font-black uppercase">
                     Team Name

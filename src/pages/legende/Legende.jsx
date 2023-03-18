@@ -2,7 +2,7 @@ import React from "react";
 
 const Legende = () => {
     return (
-        <div className="flex h-min w-full max-w-4xl flex-col gap-4 p-4 font-semibold">
+        <div className="font-semibol mx-auto flex h-min w-full max-w-4xl flex-col gap-4 p-4">
             <p className="text-green-600">
                 A steht für "ausgezeichnet" Gemeinden, die in diesem Bereich des
                 Nachhaltigkeitsindex platziert sind, haben einen hervorragenden

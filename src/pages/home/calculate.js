@@ -13,6 +13,9 @@ export const addIndexToData = (data, indexName) => {
     newData.records[79].fields["totalPerKopf"];
     const highest_total =
     newData.records[0].fields["totalPerKopf"];
+
+
+    console.log(highest_total, lowest_total)
        
     newData.records = newData.records.map((record) => {
         const index = normalize(

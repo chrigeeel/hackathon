@@ -51,6 +51,10 @@ const Gemeinde = ({ name }) => {
         useState(null);
 
     const [totalIndex, setTotalIndex] = useState(0);
+    const [energieVerbrauchIndex, setEnergieVerbrauchIndex] = useState(0);
+    const [erneuerbareElektrizitaetIndex, setErneuerbareElektrizitaetIndex] =
+        useState(0);
+    const [co2EmissionenIndex, setCo2EmissionenIndex] = useState(0);
 
     useEffect(() => {
         if (!energieVerbrauchQuery.isSuccess) {
@@ -70,6 +74,8 @@ const Gemeinde = ({ name }) => {
         if (!erneuerbareElektrizitaetQuery.isSuccess) {
             return;
         }
+
+        console.log(erneuerbareElektrizitaetQuery.data);
 
         const normalized = addIndexToData(
             erneuerbareElektrizitaetQuery.data,
@@ -122,12 +128,18 @@ const Gemeinde = ({ name }) => {
         //    return;
         //}
 
-        console.log(energieVerbrauchData.fields.energieVerbrauchIndex);
+        setEnergieVerbrauchIndex(
+            energieVerbrauchData.fields.energieVerbrauchIndex
+        );
         let totalIndex = 0;
         totalIndex += energieVerbrauchData.fields.energieVerbrauchIndex;
 
+        setCo2EmissionenIndex(co2EmissionenData.fields.co2EmissionenIndex);
         totalIndex += co2EmissionenData.fields.co2EmissionenIndex;
 
+        setErneuerbareElektrizitaetIndex(
+            erneuerbareElektrizitaetData.fields.erneuerbareElektrizitaetIndex
+        );
         totalIndex +=
             erneuerbareElektrizitaetData.fields.erneuerbareElektrizitaetIndex;
 
@@ -152,8 +164,29 @@ const Gemeinde = ({ name }) => {
     ]);
 
     return (
-        <div className="mt-4">
+        <div className="mt-4 flex flex-col gap-4">
             <Pie value={totalIndex} />
+            <div className="flex w-full flex-col rounded-lg bg-[#25244E] px-3 py-2 shadow-lg">
+                <span className="font-semibold text-mute">Zusammensetzung</span>
+                <span className="mt-2 flex font-semibold">
+                    Energie Verbrauch:{" "}
+                    <span className="ml-auto">
+                        {Math.round(energieVerbrauchIndex * 100)}
+                    </span>
+                </span>
+                <span className="mt-2 flex font-semibold">
+                    CO2 Emissionen:{" "}
+                    <span className="ml-auto">
+                        {Math.round(co2EmissionenIndex * 100)}
+                    </span>
+                </span>
+                <span className="mt-2 flex font-semibold">
+                    Erneuerbare Elektrizitäten:{" "}
+                    <span className="ml-auto">
+                        {Math.round(erneuerbareElektrizitaetIndex * 100)}
+                    </span>
+                </span>
+            </div>
         </div>
     );
 };
