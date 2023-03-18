@@ -40,11 +40,11 @@ const Gemeinde = ({ name }) => {
     });
 
     const [energieVerbrauchData, setEnergieVerbrauchData] = useState({});
-    const [CO2Emissionen, setCO2Emissionen] = useState({});
-    const [ErneuerbareElektrizitaet, setErneuerbareElektrizitaet] = useState(
+    const [co2EmissionenData, setco2EmissionenData] = useState({});
+    const [erneuerbareElektrizitaetData, seterneuerbareElektrizitaetData] = useState(
         {}
     );
-    const [EnergiefoerderProgramm, setEnergiefoerderProgramm] = useState({});
+    const [energiefoerderProgrammData, setEnergiefoerderProgrammData] = useState({});
 
     useEffect(() => {
         if (!energieVerbrauchQuery.isSuccess) {
@@ -61,46 +61,46 @@ const Gemeinde = ({ name }) => {
     }, [energieVerbrauchQuery.data]);
 
     useEffect(() => {
-        if (!energieVerbrauchQuery.isSuccess) {
+        if (!erneuerbareElektrizitaetQuery.isSuccess) {
             return;
         }
 
         const normalized = addInverseIndexToData(
-            energieVerbrauchQuery.data,
-            "energieVerbrauchIndex"
+            erneuerbareElektrizitaetQuery.data,
+            "erneuerbareElektrizitaetIndex"
         );
 
         const data = getSpecificGemeinde(normalized, name);
-        setEnergieVerbrauchData(data);
-    }, [energieVerbrauchQuery.data]);
+        seterneuerbareElektrizitaetData(data);
+    }, [erneuerbareElektrizitaetQuery.data]);
 
     useEffect(() => {
-        if (!energieVerbrauchQuery.isSuccess) {
+        if (!co2EmissionenQuery.isSuccess) {
             return;
         }
 
         const normalized = addInverseIndexToData(
-            energieVerbrauchQuery.data,
-            "energieVerbrauchIndex"
+            co2EmissionenQuery.data,
+            "co2EmissionenIndex"
         );
 
         const data = getSpecificGemeinde(normalized, name);
-        setEnergieVerbrauchData(data);
-    }, [energieVerbrauchQuery.data]);
+        setco2EmissionenData(data);
+    }, [co2EmissionenQuery.data]);
 
     useEffect(() => {
-        if (!energieVerbrauchQuery.isSuccess) {
+        if (!energiefoerderProgrammQuery.isSuccess) {
             return;
         }
 
         const normalized = addInverseIndexToData(
-            energieVerbrauchQuery.data,
-            "energieVerbrauchIndex"
+            energiefoerderProgrammQuery.data,
+            "EnergiefoerderProgrammIndex"
         );
 
         const data = getSpecificGemeinde(normalized, name);
-        setEnergieVerbrauchData(data);
-    }, [energieVerbrauchQuery.data]);
+        setEnergiefoerderProgrammData(data);
+    }, [energiefoerderProgrammQuery.data]);
 
     return (
         <div className="mt-4">
