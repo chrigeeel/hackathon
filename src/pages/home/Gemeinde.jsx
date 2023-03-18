@@ -7,7 +7,11 @@ import {
     getErneuerbareElektrizitaet,
     getSpecificGemeinde,
 } from "../../api/api";
-import { addInverseIndexToData, addIndexToData } from "./calculate";
+import {
+    addInverseIndexToData,
+    addIndexToData,
+    addIndexToDataGeneral,
+} from "./calculate";
 import Pie from "./Pie";
 
 function normalize_and_inversion(value, min, max) {
@@ -19,34 +23,34 @@ function normalize(value, min, max) {
 }
 
 const Gemeinde = ({ name }) => {
-    console.log(name);
-
     const energieVerbrauchQuery = useQuery({
-        queryKey: ["energieVerbrauch"],
+        queryKey: ["energieVerbrauch", name],
         queryFn: getEnergieverbrauch,
     });
 
     const erneuerbareElektrizitaetQuery = useQuery({
-        queryKey: ["erneuerbareElektrizitaet"],
+        queryKey: ["erneuerbareElektrizitaet", name],
         queryFn: getErneuerbareElektrizitaet,
     });
 
     const co2EmissionenQuery = useQuery({
-        queryKey: ["co2Emissionen"],
+        queryKey: ["co2Emissionen", name],
         queryFn: getCO2Emissionen,
     });
 
     const energiefoerderProgrammQuery = useQuery({
-        queryKey: ["energiefoerderProgramm"],
+        queryKey: ["energiefoerderProgramm", name],
         queryFn: getEnergiefoerderProgramm,
     });
 
-    const [energieVerbrauchData, setEnergieVerbrauchData] = useState({});
-    const [co2EmissionenData, setco2EmissionenData] = useState({});
+    const [energieVerbrauchData, setEnergieVerbrauchData] = useState(null);
+    const [co2EmissionenData, setco2EmissionenData] = useState(null);
     const [erneuerbareElektrizitaetData, seterneuerbareElektrizitaetData] =
-        useState({});
+        useState(null);
     const [energiefoerderProgrammData, setEnergiefoerderProgrammData] =
-        useState({});
+        useState(null);
+
+    const [totalIndex, setTotalIndex] = useState(0);
 
     useEffect(() => {
         if (!energieVerbrauchQuery.isSuccess) {
@@ -60,7 +64,7 @@ const Gemeinde = ({ name }) => {
 
         const data = getSpecificGemeinde(normalized, name);
         setEnergieVerbrauchData(data);
-    }, [energieVerbrauchQuery.data]);
+    }, [energieVerbrauchQuery.data, name]);
 
     useEffect(() => {
         if (!erneuerbareElektrizitaetQuery.isSuccess) {
@@ -88,25 +92,65 @@ const Gemeinde = ({ name }) => {
 
         const data = getSpecificGemeinde(normalized, name);
         setco2EmissionenData(data);
-    }, [co2EmissionenQuery.data]);
+    }, [co2EmissionenQuery.data, name]);
 
     useEffect(() => {
         if (!energiefoerderProgrammQuery.isSuccess) {
             return;
         }
 
-        const normalized = addIndexToData(
+        const normalized = addIndexToDataGeneral(
             energiefoerderProgrammQuery.data,
-            "EnergiefoerderProgrammIndex"
+            "energiefoerderProgrammIndex"
         );
 
         const data = getSpecificGemeinde(normalized, name);
         setEnergiefoerderProgrammData(data);
-    }, [energiefoerderProgrammQuery.data]);
+    }, [energiefoerderProgrammQuery.data, name]);
+
+    useEffect(() => {
+        if (!energieVerbrauchData) {
+            return;
+        }
+        if (!co2EmissionenData) {
+            return;
+        }
+        if (!erneuerbareElektrizitaetData) {
+            return;
+        }
+        if (!energiefoerderProgrammData) {
+            return;
+        }
+
+        console.log(energieVerbrauchData.fields.energieVerbrauchIndex);
+        let totalIndex = 0;
+        totalIndex += energieVerbrauchData.fields.energieVerbrauchIndex;
+
+        totalIndex += co2EmissionenData.fields.co2EmissionenIndex;
+
+        totalIndex +=
+            erneuerbareElektrizitaetData.fields.erneuerbareElektrizitaetIndex;
+
+        totalIndex +=
+            energiefoerderProgrammData.fields.energiefoerderProgrammIndex;
+
+        if (totalIndex > 4) {
+            totalIndex = 3.9;
+        }
+
+        console.log((totalIndex * 100) / 4);
+        setTotalIndex(Math.round((totalIndex * 100) / 4));
+    }, [
+        energieVerbrauchData,
+        co2EmissionenData,
+        erneuerbareElektrizitaetData,
+        energiefoerderProgrammData,
+        name,
+    ]);
 
     return (
         <div className="mt-4">
-            <Pie value={90} />
+            <Pie value={totalIndex} />
         </div>
     );
 };
