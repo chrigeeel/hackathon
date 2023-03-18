@@ -137,8 +137,8 @@ const Gemeinde = ({ name }) => {
         if (totalIndex > 3) {
             totalIndex = 2.9;
         }
-        if (totalIndex < 0.3) {
-            totalIndex = 0.3;
+        if (totalIndex < 0.4) {
+            totalIndex = 0.4;
         }
 
         console.log((totalIndex * 100) / 3);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Divider from "../../components/Divider";
-import Explanation from "./explanation";
+import Explanation from "./Explanation";
 import Gemeinde from "./Gemeinde";
 import GemeindeInput from "./GemeindeInput";
 
@@ -13,9 +13,12 @@ const Comparison = () => {
             <h3 className="text-center text-3xl font-black">
                 Nachhaltigkeitsindex der 80 Gemeinden Thurgaus
             </h3>
-            
-            <h4 className="text-sm mt-4 text-center font-semibold">
-                Nachhaltigkeit ist wichtig, um die Umwelt und die natürlichen Ressourcen zu schützen. Nur durch gemeinsames Handeln können wir eine nachhaltige Zukunft erreichen. Wie steht deine Gemeinde im Vergleich?
+
+            <h4 className="mt-4 text-center text-sm font-semibold">
+                Nachhaltigkeit ist wichtig, um die Umwelt und die natürlichen
+                Ressourcen zu schützen. Nur durch gemeinsames Handeln können wir
+                eine nachhaltige Zukunft erreichen. Wie steht deine Gemeinde im
+                Vergleich?
             </h4>
             <Divider className="mt-4" />
             <div className="flex w-full flex-col gap-4 md:flex-row">

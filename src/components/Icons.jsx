@@ -19,3 +19,22 @@ export const Home = ({ width, height, className }) => {
         </svg>
     );
 };
+
+export const Person = ({ width, height, className }) => {
+    return (
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+            height={48}
+            width={48}
+        >
+            <path
+                fill="currentColor"
+                fillRule="evenodd"
+                d="M10.5 3.5C10.5 5.433 8.93301 7 7.00001 7C5.06702 7 3.50001 5.433 3.50001 3.5C3.50001 1.567 5.06702 0 7.00001 0C8.93301 0 10.5 1.567 10.5 3.5ZM0.320496 13.4C1.2125 10.56 3.86569 8.50003 7.00002 8.50003C10.1343 8.50003 12.7875 10.56 13.6795 13.4C13.7752 13.7044 13.5371 14 13.218 14H0.782057C0.462944 14 0.224872 13.7044 0.320496 13.4Z"
+                clipRule="evenodd"
+            />
+        </svg>
+    );
+};
