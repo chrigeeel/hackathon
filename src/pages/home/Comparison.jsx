@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Divider from "../../components/Divider";
 import Explanation from "./explanation";
 import Gemeinde from "./Gemeinde";
 import GemeindeInput from "./GemeindeInput";
 
 const Comparison = () => {
+    const [baseGemeinde, setBaseGemeinde] = useState("Romanshorn");
+    const [secondGemeinde, setSecondGemeinde] = useState("");
+
     return (
         <div className="mx-auto flex w-full max-w-4xl flex-col p-4">
             <h3 className="text-center text-3xl font-black">
@@ -13,13 +16,36 @@ const Comparison = () => {
             <Divider className="mt-4" />
             <div className="flex w-full flex-col gap-4 md:flex-row">
                 <div className="mt-4 w-full pb-4 md:w-1/2">
-                    <GemeindeInput />
-                    <Gemeinde name="Romanshorn" />
+                    <GemeindeInput
+                        defaultValue={"Romanshorn"}
+                        value={{
+                            label: baseGemeinde,
+                            value: baseGemeinde,
+                        }}
+                        setValue={(val) => {
+                            setBaseGemeinde(val.value);
+                        }}
+                    />
+                    <Gemeinde
+                        name={baseGemeinde}
+                        setGemeinde={setBaseGemeinde}
+                    />
                 </div>
                 <div className="h-full w-0.5 bg-[#393869]"></div>
                 <div className="mt-4 w-full pb-4 md:w-1/2">
-                    <GemeindeInput />
-                    <Gemeinde name="Romanshorn" />
+                    <GemeindeInput
+                        value={{
+                            label: secondGemeinde,
+                            value: secondGemeinde,
+                        }}
+                        setValue={(val) => {
+                            setSecondGemeinde(val.value);
+                        }}
+                    />
+                    <Gemeinde
+                        name={secondGemeinde}
+                        setGemeinde={setSecondGemeinde}
+                    />
                 </div>
             </div>
             <Divider className="mb-4" />

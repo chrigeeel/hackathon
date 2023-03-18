@@ -19,6 +19,8 @@ function normalize(value, min, max) {
 }
 
 const Gemeinde = ({ name }) => {
+    console.log(name);
+
     const energieVerbrauchQuery = useQuery({
         queryKey: ["energieVerbrauch"],
         queryFn: getEnergieverbrauch,
@@ -41,10 +43,10 @@ const Gemeinde = ({ name }) => {
 
     const [energieVerbrauchData, setEnergieVerbrauchData] = useState({});
     const [co2EmissionenData, setco2EmissionenData] = useState({});
-    const [erneuerbareElektrizitaetData, seterneuerbareElektrizitaetData] = useState(
-        {}
-    );
-    const [energiefoerderProgrammData, setEnergiefoerderProgrammData] = useState({});
+    const [erneuerbareElektrizitaetData, seterneuerbareElektrizitaetData] =
+        useState({});
+    const [energiefoerderProgrammData, setEnergiefoerderProgrammData] =
+        useState({});
 
     useEffect(() => {
         if (!energieVerbrauchQuery.isSuccess) {
