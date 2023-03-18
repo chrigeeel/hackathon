@@ -25,7 +25,7 @@ const Explanation = () => {
                         </span>
                     </span>
                     <span className="font-semibold">
-                        3.
+                        4.
                         <span className="ml-4">
                             Erneuerbare Elektrizitätsproduktion
                         </span>

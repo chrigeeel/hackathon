@@ -13,6 +13,10 @@ const Comparison = () => {
             <h3 className="text-center text-3xl font-black">
                 Nachhaltigkeitsindex der 80 Gemeinden Thurgaus
             </h3>
+            
+            <h4 className="text-sm mt-4 text-center font-semibold">
+                Nachhaltigkeit ist wichtig, um die Umwelt und die natürlichen Ressourcen zu schützen. Nur durch gemeinsames Handeln können wir eine nachhaltige Zukunft erreichen. Wie steht deine Gemeinde im Vergleich?
+            </h4>
             <Divider className="mt-4" />
             <div className="flex w-full flex-col gap-4 md:flex-row">
                 <div className="mt-4 w-full pb-4 md:w-1/2">
