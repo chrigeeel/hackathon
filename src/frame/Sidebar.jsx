@@ -12,8 +12,13 @@ const mainRoutes = [
         icon: <Home height="20" className="mb-1" />,
     },
     {
+        name: "Ranking",
+        path: "/ranking",
+        icon: <Person height="20" className="mb-1" />,
+    },
+    {
         name: "Personal Index",
-        path: "/",
+        path: "/personal",
         icon: <Person height="20" className="mb-1" />,
     },
 ];
