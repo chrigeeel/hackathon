@@ -7,24 +7,24 @@ import Home from "./pages/home/Home";
 const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Frame />,
-    children: [
-      {
+    {
         path: "/",
-        element: <Home />,
-      },
-    ],
-  },
+        element: <Frame />,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+            },
+        ],
+    },
 ]);
 
 const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+        </QueryClientProvider>
+    );
 };
 
 export default App;
