@@ -7,21 +7,17 @@ Recommend using yarn.
 ```
 yarn install
 ```
-
-## Run
+or
 ```
-yarn dev
-```
-
-
-With npm:
-## Install
-```
-
 npm install
 ```
 
 
 ## Run
 ```
+yarn dev
+```
+or
+```
 npm run dev
+```
