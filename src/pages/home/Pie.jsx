@@ -37,7 +37,7 @@ const Pie = ({ value }) => {
                 border-opacity-100 bg-[#25244E]"
             >
                 <span className="text-7xl font-black md:text-6xl lg:text-7xl">
-                    90
+                    {value}
                 </span>
                 <span className="text-sm font-semibold text-mute">/100</span>
             </div>

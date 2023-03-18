@@ -32,7 +32,7 @@ export const getErneuerbareElektrizitaet = async () => {
 }
 
 export const getCO2Emissionen = async () => {
-    const response = await axios.get(calculateUrl(CO2_EMISSIONEN_DATASET))
+    let response = await axios.get(calculateUrl(CO2_EMISSIONEN_DATASET))
 
     response = sortResponse(response)
 
@@ -40,7 +40,7 @@ export const getCO2Emissionen = async () => {
 }
 
 export const getEnergiefoerderProgramm = async () => {
-    let response = await axios.get(calculateUrl(ENERGIEFOERDERPROGRAMM_DATASET))
+    let response = await axios.get(`https://data.tg.ch/api/records/1.0/search/?rows=80&sort=jahr&start=80&dataset=${ENERGIEFOERDERPROGRAMM_DATASET}&timezone=Europe%2FZurich&lang=en`)
 
     response = sortResponse(response)
 
