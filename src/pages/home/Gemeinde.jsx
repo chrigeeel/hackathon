@@ -131,18 +131,18 @@ const Gemeinde = ({ name }) => {
         totalIndex +=
             erneuerbareElektrizitaetData.fields.erneuerbareElektrizitaetIndex;
 
-        totalIndex +=
-            energiefoerderProgrammData.fields.energiefoerderProgrammIndex;
+        //totalIndex +=
+        //    energiefoerderProgrammData.fields.energiefoerderProgrammIndex;
 
-        if (totalIndex > 4) {
-            totalIndex = 3.9;
+        if (totalIndex > 3) {
+            totalIndex = 2.9;
         }
-        if (totalIndex < 0.4) {
-            totalIndex = 0.4;
+        if (totalIndex < 0.3) {
+            totalIndex = 0.3;
         }
 
-        console.log((totalIndex * 100) / 4);
-        setTotalIndex(Math.round((totalIndex * 100) / 4));
+        console.log((totalIndex * 100) / 3);
+        setTotalIndex(Math.round((totalIndex * 100) / 3));
     }, [
         energieVerbrauchData,
         co2EmissionenData,
